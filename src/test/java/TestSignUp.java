@@ -10,30 +10,32 @@ import java.util.concurrent.TimeUnit;
 
 public class TestSignUp
     {
-        private WebDriver driver;
+        SignUp signupPage;
+
 
         @BeforeClass
         public void loadPage()
         {
-            driver = new FirefoxDriver();
-            driver.get("http://learn2test.net/qa/apps/sign_up/v1/");
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+            WebDriver driver = new FirefoxDriver();
+
+            signupPage = new SignUp(driver);
+            signupPage.loadPage();
+
+
         }
 
         @Test
         public  void verifyTitle() throws IOException
         {
-            String title = driver.getTitle();
-            String title_exp = "Welcome to Sign Up v1";
-            Assert.assertEquals(title, title_exp, "FAIL: expected  ");
+            Assert.assertTrue(signupPage.verifyTitle("Welcome to Sign Up v1"));
         }
 
 
-        @AfterClass
-        public void tearDown()
-        {
-            driver.quit();
-        }
+//        @AfterClass
+//        public void tearDown()
+//        {
+//            driver.quit();
+//        }
 
 
 
