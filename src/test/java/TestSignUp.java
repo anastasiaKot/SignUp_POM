@@ -1,3 +1,5 @@
+import com.javafx.tools.doclets.formats.html.SourceToHTMLConverter;
+import com.sun.xml.internal.messaging.saaj.util.SAAJUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -27,15 +29,16 @@ public class TestSignUp
         @Test
         public  void verifyTitle() throws IOException
         {
-            Assert.assertTrue(signupPage.verifyTitle("Welcome to Sign Up v1"));
+            signupPage.jjj();
+            Assert.assertTrue(signupPage.verifyTitle(signupPage.readResourses("title_exp")));
         }
 
 
-//        @AfterClass
-//        public void tearDown()
-//        {
-//            driver.quit();
-//        }
+        @AfterClass
+        public void tearDown()
+        {
+            signupPage.closeDriver();
+        }
 
 
 
