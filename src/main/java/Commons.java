@@ -21,8 +21,12 @@ public class Commons
         {
 
         }
+    public static void main (String[]args){
+    System.out.println("main class");
+    }
 
-        public void loadPage() {
+        public void loadPage()
+        {
             driver.get("http://learn2test.net/qa/apps/sign_up/v1/");
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.manage().window().maximize();
