@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import javax.imageio.IIOException;
 import java.io.FileInputStream;
@@ -22,7 +23,12 @@ public class Commons
 
         }
 
-        public void loadPage() {
+     String ana = "Ana";
+     String phone = "6543210000";
+
+
+
+    public void loadPage() {
             driver.get("http://learn2test.net/qa/apps/sign_up/v1/");
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.manage().window().maximize();
@@ -73,9 +79,19 @@ public class Commons
             return existOrNot;
 
         }
-
-
-
-
+    public void submitFormSuccessfully()
+        {
+        //String ana = "Ana";
+        driver.findElement(By.xpath(".//*[@id='id_fname']")).sendKeys(ana);
+        driver.findElement(By.xpath(".//*[@id='id_lname']")).sendKeys("Shpak");
+        driver.findElement(By.xpath(".//*[@id='id_email']")).sendKeys("ana@yha.com");
+        driver.findElement(By.xpath(".//*[@id='id_phone']")).sendKeys(phone);
+        driver.findElement(By.xpath(".//*[@id='id_g_radio_02']")).click();
+        WebElement element = (driver.findElement(By.xpath(".//*[@id='id_state']")));
+        org.openqa.selenium.support.ui.Select select = new org.openqa.selenium.support.ui.Select(element);
+        select.selectByVisibleText("California");
+        driver.findElement(By.xpath(".//*[@id='id_checkbox']")).click();
+        driver.findElement(By.xpath(".//*[@id='id_submit_button']")).submit();
+        }
 
     }

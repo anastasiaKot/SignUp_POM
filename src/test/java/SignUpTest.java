@@ -1,8 +1,9 @@
+import com.sun.org.apache.bcel.internal.generic.Select;
 import com.sun.tools.javac.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +70,14 @@ public void test008_testFieldIsEmpty()
       boolean empty = driver.findElement(By.xpath(".//*[@id='id_fname']")).getAttribute("value").isEmpty();
         Assert.assertTrue(empty);
     }
-
+@Test
+public void test009_submitForm() throws InterruptedException
+    {
+    commonsMain.submitFormSuccessfully();
+    String confTitle = driver.getTitle();
+    Assert.assertEquals(confTitle, "Confirmation", "Failed");
+    Thread.sleep(5000);
+    }
 
 
 
